@@ -1,6 +1,4 @@
-# storewithgetx
-
-A new Flutter project.
+# store with getx
 
 ## Getting Started
 
