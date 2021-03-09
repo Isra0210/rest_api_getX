@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
-import 'package:storewithgetx/controller/product_controller.dart';
-import 'package:storewithgetx/models/product.dart';
-import 'package:storewithgetx/widget/grid_widget.dart';
+import 'package:storewithgetx/app/controller/controller.dart';
+import 'package:storewithgetx/app/models/product_model.dart';
+import 'package:storewithgetx/app/widget/grid_widget.dart';
 
-class FavoriteView extends GetView<ProductController> {
+class FavoriteView extends GetView<Controller> {
   final List<Product> productList;
 
   FavoriteView({this.productList});

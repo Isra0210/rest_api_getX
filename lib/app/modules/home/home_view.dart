@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:storewithgetx/controller/product_controller.dart';
-import 'package:storewithgetx/views/favorite_view.dart';
-import 'package:storewithgetx/widget/grid_widget.dart';
+import 'package:storewithgetx/app/controller/controller.dart';
+import 'package:storewithgetx/app/modules/favorite/favorite_view.dart';
+import 'package:storewithgetx/app/widget/grid_widget.dart';
 
 class HomeView extends GetView {
-  final ProductController productController = Get.put(ProductController());
+  final Controller controller = Get.put(Controller());
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class HomeView extends GetView {
               ),
               onPressed: () => Get.to(
                 () => FavoriteView(
-                  productList: productController.productListFavorite,
+                  productList: controller.productListFavorite,
                 ),
               ),
             ),
@@ -44,14 +44,14 @@ class HomeView extends GetView {
             Container(
               height: MediaQuery.of(context).size.height,
               child: Obx(() {
-                if (productController.isLoadingRx) {
+                if (controller.isLoadingRx) {
                   return Center(
                     child: CircularProgressIndicator(
                       valueColor: AlwaysStoppedAnimation(Colors.black),
                     ),
                   );
                 } else {
-                  return GridWidget(productList: productController.productList);
+                  return GridWidget(productList: controller.productList);
                 }
               }),
             )

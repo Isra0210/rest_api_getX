@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:storewithgetx/controller/product_controller.dart';
-import 'package:storewithgetx/models/product.dart';
+import 'package:storewithgetx/app/models/product_model.dart';
 
-class ProductTile extends GetView<ProductController> {
+class ProductTile extends GetView {
   final Product product;
   const ProductTile(this.product);
 

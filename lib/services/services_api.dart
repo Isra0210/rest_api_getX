@@ -1,5 +1,5 @@
 import 'package:http/http.dart' as http;
-import 'package:storewithgetx/models/product.dart';
+import 'package:storewithgetx/app/models/product_model.dart';
 
 class ServicesApi {
   static var client = http.Client();

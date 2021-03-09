@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:storewithgetx/controller/product_controller.dart';
-import 'package:storewithgetx/views/home_view.dart';
+import 'package:storewithgetx/app/controller/controller.dart';
+import 'package:storewithgetx/app/modules/home/home_view.dart';
 
 void main() {
-  Get.put(ProductController());
+  Get.put(Controller());
   runApp(MyApp());
 }
 

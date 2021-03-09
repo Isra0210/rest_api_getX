@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import 'package:storewithgetx/models/product.dart';
+import 'package:storewithgetx/app/models/product_model.dart';
 import 'package:storewithgetx/services/services_api.dart';
 
-class ProductController extends GetxController {
+class Controller extends GetxController {
   RxBool isLoading = true.obs;
   get isLoadingRx => isLoading.value;
   List<Product> productList = List<Product>().obs;

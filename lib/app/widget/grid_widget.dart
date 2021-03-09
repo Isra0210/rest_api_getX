@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
-import 'package:storewithgetx/models/product.dart';
-import 'package:storewithgetx/widget/product_tile_widget.dart';
+import 'package:storewithgetx/app/models/product_model.dart';
+import 'package:storewithgetx/app/widget/product_tile_widget.dart';
 
 class GridWidget extends GetView {
   final List<Product> productList;
