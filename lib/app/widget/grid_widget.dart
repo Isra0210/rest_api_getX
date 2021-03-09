@@ -11,15 +11,15 @@ class GridWidget extends GetView {
 
   @override
   Widget build(BuildContext context) {
-    return StaggeredGridView.countBuilder(
-      mainAxisSpacing: 16,
-      crossAxisSpacing: 16,
-      crossAxisCount: 2,
-      itemCount: productList.length,
-      itemBuilder: (ctx, i) {
-        return ProductTile(productList[i]);
-      },
-      staggeredTileBuilder: (i) => StaggeredTile.fit(1),
+    return Padding(
+      padding: const EdgeInsets.only(top: 5.0),
+      child: ListView.builder(
+        shrinkWrap: true,
+        itemCount: productList.length,
+        itemBuilder: (ctx, i) {
+          return ProductTile(productList[i]);
+        },
+      ),
     );
   }
 }

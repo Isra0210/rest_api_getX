@@ -11,20 +11,8 @@ class FavoriteView extends GetView<Controller> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        centerTitle: true,
-        title: Text(
-          "Seus favoritos",
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.w700,
-            color: Colors.white,
-          ),
-        ),
-      ),
-      body: productList != null && productList.length > 0
+    return Container(
+      child: productList != null && productList.length > 0
           ? GridWidget(productList: productList)
           : Center(
               child: Text('Você não possui favoritos!'),

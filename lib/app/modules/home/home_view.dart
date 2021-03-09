@@ -1,11 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:storewithgetx/app/controller/controller.dart';
+import 'package:storewithgetx/app/modules/cart/cart_view.dart';
 import 'package:storewithgetx/app/modules/favorite/favorite_view.dart';
-import 'package:storewithgetx/app/widget/grid_widget.dart';
+import 'package:storewithgetx/app/modules/home/home_controller.dart';
+import 'package:storewithgetx/app/modules/product/product_view.dart';
+import 'package:storewithgetx/app/widget/drawer_widet.dart';
 
-class HomeView extends GetView {
-  final Controller controller = Get.put(Controller());
+final HomeController homeController = HomeController();
+final Controller controller = Controller();
+
+class HomeView extends StatefulWidget {
+  @override
+  _HomeViewState createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  final List<Widget> pages = [
+    ProductView(),
+    FavoriteView(
+      productList: controller.productListFavorite,
+    ),
+    CartView(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +31,7 @@ class HomeView extends GetView {
         backgroundColor: Colors.black,
         centerTitle: true,
         title: Text(
-          "Your Store",
+          "Store",
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w700,
@@ -22,39 +39,46 @@ class HomeView extends GetView {
           ),
         ),
         actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 5),
-            child: IconButton(
-              icon: Icon(
-                Icons.favorite,
-                color: Colors.white,
-              ),
-              onPressed: () => Get.to(
-                () => FavoriteView(
-                  productList: controller.productListFavorite,
-                ),
-              ),
-            ),
-          ),
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {},
+          )
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              height: MediaQuery.of(context).size.height,
-              child: Obx(() {
-                if (controller.isLoadingRx) {
-                  return Center(
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation(Colors.black),
-                    ),
-                  );
-                } else {
-                  return GridWidget(productList: controller.productList);
-                }
-              }),
-            )
+      drawer: DrawerWidet(),
+      body: pages[homeController.index],
+      bottomNavigationBar: Obx(
+        () => BottomNavigationBar(
+          backgroundColor: Colors.black,
+          currentIndex: homeController.index,
+          selectedItemColor: Colors.yellow[700],
+          unselectedItemColor: Colors.white,
+          onTap: (newIndex) {
+            setState(() {
+              homeController.indexRx.value = newIndex;
+            });
+          },
+          selectedLabelStyle: TextStyle(color: Colors.yellow[700]),
+          unselectedLabelStyle: TextStyle(color: Colors.white),
+          type: BottomNavigationBarType.fixed,
+          items: [
+            BottomNavigationBarItem(
+              backgroundColor: Colors.black,
+              icon: Icon(
+                Icons.home,
+              ),
+              label: 'Produtos',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.favorite,
+              ),
+              label: 'Favoritos',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart),
+              label: 'Carrinho',
+            ),
           ],
         ),
       ),
